@@ -33,33 +33,32 @@ const images = [
 ];
 
 for (let i = 0; i < images.length; i++) {
-    const image = document.createElement("img");
-    image.className = "carouselImage";
-    image.src = images[i];
+    const imageObject = images[i];
+    const image = document.createElement('img');
+    image.className = 'carouselImage';
+    image.src = imageObject.image;
     carouselImagesContainer.appendChild(image);
     if (i === 0) {
-        image.classList.add("active");
+        image.classList.add('active');
     }
 }
 
 upButton.addEventListener('click',
     function() {
-        carouselImages[activeIndex].classList.remove("active");
+        carouselImages[activeIndex].classList.remove('active');
         activeIndex--;
         if (activeIndex < 0) {
             activeIndex = carouselImages.length - 1;
         }
-        carouselImages[activeIndex].classList.add("active");
-    }
-);
+        carouselImages[activeIndex].classList.add('active');
+    });
 
 downButton.addEventListener('click',
     function() {
-        carouselImages[activeIndex].classList.remove("active");
+        carouselImages[activeIndex].classList.remove('active');
         activeIndex++;
         if (activeIndex >= carouselImages.length) {
             activeIndex = 0;
         }
-        carouselImages[activeIndex].classList.add("active");
-    }
-);
+        carouselImages[activeIndex].classList.add('active');
+    });
