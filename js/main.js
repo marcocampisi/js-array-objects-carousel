@@ -1,5 +1,4 @@
 const carouselImagesContainer = document.getElementById("carouselImagesContainer");
-const carouselImages = carouselImagesContainer.getElementsByClassName("carouselImage");
 const upButton = document.getElementById("upButton");
 const downButton = document.getElementById("downButton");
 let activeIndex = 0;
@@ -33,32 +32,52 @@ const images = [
 ];
 
 for (let i = 0; i < images.length; i++) {
-    const imageObject = images[i];
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'imageContainer';
+    carouselImagesContainer.appendChild(imageContainer);
+
     const image = document.createElement('img');
     image.className = 'carouselImage';
-    image.src = imageObject.image;
-    carouselImagesContainer.appendChild(image);
+    image.src = images[i].image;
+    imageContainer.appendChild(image);
+
+    const textContainer = document.createElement('div');
+    textContainer.className = 'textContainer';
+    imageContainer.appendChild(textContainer);
+
+    const title = document.createElement('h2');
+    title.className = 'imageTitle';
+    title.innerText = images[i].title;
+    textContainer.appendChild(title);
+
+    const text = document.createElement('p');
+    text.className = 'imageText';
+    text.innerText = images[i].text;
+    textContainer.appendChild(text);
+
     if (i === 0) {
-        image.classList.add('active');
+        imageContainer.classList.add("active");
     }
 }
 
+const imageContainers = carouselImagesContainer.getElementsByClassName('imageContainer');
+
 upButton.addEventListener('click',
     function() {
-        carouselImages[activeIndex].classList.remove('active');
+        imageContainers[activeIndex].classList.remove('active');
         activeIndex--;
         if (activeIndex < 0) {
-            activeIndex = carouselImages.length - 1;
+            activeIndex = imageContainers.length - 1;
         }
-        carouselImages[activeIndex].classList.add('active');
+        imageContainers[activeIndex].classList.add('active');
     });
 
 downButton.addEventListener('click',
     function() {
-        carouselImages[activeIndex].classList.remove('active');
+        imageContainers[activeIndex].classList.remove('active');
         activeIndex++;
-        if (activeIndex >= carouselImages.length) {
+        if (activeIndex >= imageContainers.length) {
             activeIndex = 0;
         }
-        carouselImages[activeIndex].classList.add('active');
+        imageContainers[activeIndex].classList.add('active');
     });
