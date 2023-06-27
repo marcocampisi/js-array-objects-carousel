@@ -3,6 +3,11 @@
 
 /* MAIN */
 
+body {
+    background: rgb(252,255,200);
+    background: radial-gradient(circle, rgba(252,255,200,1) 0%, rgba(148,187,233,1) 100%);
+}
+
 .container {
     width: 900px;
     height: 100vh;
@@ -30,8 +35,9 @@
     padding: 10px;
     border-radius: 50%;
     position: absolute;
-    border: 1px solid black;
+    border: 2px solid white;
     z-index: 1;
+    cursor: pointer;
 }
 
 #upButton {
@@ -60,6 +66,8 @@
     overflow: hidden;
     position: relative;
     display: none;
+    border-radius: 20px;
+    border: 2px solid lightgray;
 }
 
 .imageContainer.active {
@@ -68,11 +76,21 @@
 
 .textContainer {
     position: absolute;
-    bottom: 50px;
-    left: auto;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    bottom: 70px;
+    width: 90%;
     color: white;
+    padding: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.textContainer > h2 {
+    font-weight: bold;
+    text-shadow: 2px 2px 2px black;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.textContainer > p {
+    text-shadow: 2px 2px 2px black;
 }
